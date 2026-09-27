@@ -6,7 +6,7 @@
   <meta name="description" content="Премиальный маникюр и эстетический уход за ногтями в приватном кабинете. Запись к частному мастеру.">
   <title>Эстетика & Уход — Частный кабинет маникюра</title>
 
-  <!-- Подключение Google Fonts -->
+  <!-- Подключение Google Fonts (Playfair Display для заголовков, Plus Jakarta Sans для текста) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -61,11 +61,7 @@
         </div>
         <div class="hero__image-wrapper">
           <div class="hero__card-preview">
-            <div class="hero\_\_card-preview">
-            <img src="hero_cabinet_interior.png" alt="Приватный кабинет маникюра ESTHÉTIQUE" class="hero__img">
-              </div>
-              <span>Приватный кабинет</span>
-            </div>
+            <img src="hero_cabinet_interior.png" alt="Интерьер приватного кабинета ESTHÉTIQUE" class="hero__img">
           </div>
         </div>
       </div>
@@ -80,7 +76,6 @@
         </div>
 
         <div class="advantages__grid">
-          <!-- Карточка 1 -->
           <article class="advantage-card">
             <div class="advantage-card__icon" aria-hidden="true">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -97,7 +92,6 @@
             </p>
           </article>
 
-          <!-- Карточка 2 -->
           <article class="advantage-card">
             <div class="advantage-card__icon" aria-hidden="true">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -111,7 +105,6 @@
             </p>
           </article>
 
-          <!-- Карточка 3 -->
           <article class="advantage-card">
             <div class="advantage-card__icon" aria-hidden="true">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -137,7 +130,6 @@
         </div>
 
         <div class="prices__grid">
-          <!-- Услуга 1 -->
           <div class="price-card">
             <div class="price-card__header">
               <h3 class="price-card__title">Комплексный маникюр</h3>
@@ -155,7 +147,6 @@
             </div>
           </div>
 
-          <!-- Услуга 2 -->
           <div class="price-card">
             <div class="price-card__header">
               <h3 class="price-card__title">Гигиенический маникюр</h3>
@@ -173,7 +164,6 @@
             </div>
           </div>
 
-          <!-- Услуга 3 -->
           <div class="price-card">
             <div class="price-card__header">
               <h3 class="price-card__title">Японский эко-маникюр</h3>
@@ -191,7 +181,6 @@
             </div>
           </div>
 
-          <!-- Услуга 4 -->
           <div class="price-card">
             <div class="price-card__header">
               <h3 class="price-card__title">Дизайн & Френч</h3>
@@ -222,20 +211,16 @@
 
         <div class="gallery__grid">
           <div class="gallery__item">
-            <img src="gallery\_classic\_nude.png" alt="Классическое нюдовое покрытие" class="gallery\_\_img">
-            </div>
+            <img src="gallery_classic_nude.png" alt="Классический нюдовый маникюр Clean Girl" class="gallery__img">
           </div>
           <div class="gallery__item">
-            <img src="gallery\_japanese\_manicure.png" alt="Японский эко-маникюр" class="gallery\_\_img">
-            </div>
+            <img src="gallery_japanese_manicure.png" alt="Японский эко-маникюр P.Shine" class="gallery__img">
           </div>
           <div class="gallery__item">
-            <img src="gallery\_french\_design.png" alt="Минималистичный микро-френч" class="gallery\_\_img">
-            </div>
+            <img src="gallery_french_design.png" alt="Минималистичный микро-френч" class="gallery__img">
           </div>
           <div class="gallery__item">
-            <img src="gallery\_classic\_nude.png" alt="Эстетика ухода за ногтями" class="gallery\_\_img">
-            </div>
+            <img src="gallery_classic_nude.png" alt="Эстетика ухода за ногтями" class="gallery__img">
           </div>
         </div>
       </div>
@@ -291,22 +276,19 @@
     </button>
   </div>
 
-  <!-- Подключение библиотек GSAP и ScrollTrigger через CDN -->
+  <!-- Подключение GSAP и ScrollTrigger -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
 
-  <!-- Инициализация GSAP-анимаций -->
+  <!-- Инициализация анимаций -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Регистрация плагина ScrollTrigger
       gsap.registerPlugin(ScrollTrigger);
 
       const mm = gsap.matchMedia();
 
-      // Анимации запускаются только если пользователь не включил режим сокращения движения
       mm.add('(prefers-reduced-motion: no-preference)', () => {
-
-        // 1. Анимация главного экрана (Hero) при загрузке
+        // Hero Timeline
         const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.8 } });
 
         heroTl
@@ -316,7 +298,7 @@
           .to('.hero__actions', { opacity: 1, y: 0, startAt: { y: 20 } }, '-=0.5')
           .to('.hero__card-preview', { opacity: 1, scale: 1, startAt: { scale: 0.95 } }, '-=0.7');
 
-        // 2. Плавное появление заголовков секций при скролле
+        // Заголовки секций
         gsap.utils.toArray('.section-header').forEach((header) => {
           gsap.to(header, {
             opacity: 1,
@@ -331,7 +313,7 @@
           });
         });
 
-        // 3. Каскадное появление карточек преимуществ (Advantages)
+        // Карточки преимуществ
         gsap.to('.advantage-card', {
           opacity: 1,
           y: 0,
@@ -345,7 +327,7 @@
           startAt: { y: 40 }
         });
 
-        // 4. Каскадное появление карточек прайс-листа (Price Cards)
+        // Прайс-лист
         gsap.to('.price-card', {
           opacity: 1,
           y: 0,
@@ -359,7 +341,7 @@
           startAt: { y: 40 }
         });
 
-        // 5. Каскадный эффект для сетки галереи (Gallery 4:5)
+        // Сетка галереи
         gsap.to('.gallery__item', {
           opacity: 1,
           y: 0,
@@ -376,7 +358,6 @@
       });
     });
 
-    // Заглушка открытия виджета бронирования
     function openBookingModal(serviceName = '') {
       const targetService = serviceName ? ` на услугу "${serviceName}"` : '';
       alert(`[Widget Placeholder]: Открытие модального окна записи${targetService}.`);
