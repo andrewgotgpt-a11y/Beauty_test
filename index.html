@@ -253,7 +253,7 @@
       </div>
     </section>
 
-    <!-- Секция FAQ -->
+    <!-- Секция FAQ (Нативный HTML5 Аккордеон) -->
     <section id="faq" class="faq-section">
       <div class="container">
         <div class="section-header">
@@ -358,7 +358,7 @@
     </div>
   </div>
 
-  <!-- Модальное окно онлайн-записи DIKIDI -->
+  <!-- Модальное окно онлайн-записи DIKIDI (Full Screen на мобильных) -->
   <div id="dikidi-modal" class="lightbox" aria-hidden="true" onclick="closeDikidiModalOnBackdrop(event)">
     <div class="dikidi-dialog">
       <button type="button" class="lightbox__close dikidi-close" onclick="closeDikidiModal()" aria-label="Закрыть">&times;</button>
@@ -371,13 +371,19 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
 
   <script>
-    // ==========================================
-    // ИНТЕГРАЦИЯ DIKIDI (Вставьте вашу ссылку!)
-    // Пример ссылки из DIKIDI: "https://dikidi.net/ru/widget/123456"
-    // ==========================================
+    // =========================================================================
+    // Вставьте вашу реальную ссылку из личного кабинета DIKIDI!
+    // Инструкция: DIKIDI Business -> Настройки -> Канал записи -> Ссылка
+    // Пример: const DIKIDI_WIDGET_URL = "https://dikidi.net/w/123456";
+    // =========================================================================
     const DIKIDI_WIDGET_URL = "https://dikidi.net/#widget=218952";
 
     function openBookingModal(serviceName = '') {
+      if (DIKIDI_WIDGET_URL.includes('ВАШ_ID_ИЛИ_ССЫЛКА')) {
+        alert('Пожалуйста, вставьте вашу настоящую ссылку DIKIDI в переменную DIKIDI_WIDGET_URL внутри index.html.');
+        return;
+      }
+
       const modal = document.getElementById('dikidi-modal');
       const frame = document.getElementById('dikidi-frame');
 
@@ -455,7 +461,7 @@
       }
     });
 
-    // GSAP-анимация
+    // Оптимизированная GSAP-анимация без прыжков
     document.addEventListener('DOMContentLoaded', () => {
       gsap.registerPlugin(ScrollTrigger);
 
