@@ -9,13 +9,18 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Хедер -->
+  <!-- Динамические светящиеся сферы для эффектного Glassmorphism -->
+  <div class="bg-glow-orb bg-glow-orb--1" aria-hidden="true"></div>
+  <div class="bg-glow-orb bg-glow-orb--2" aria-hidden="true"></div>
+  <div class="bg-glow-orb bg-glow-orb--3" aria-hidden="true"></div>
+
+  <!-- Хедер сайта -->
   <header class="header">
     <div class="container header__container">
       <a href="#" class="logo" aria-label="На главную">
@@ -27,7 +32,7 @@
         <ul class="nav__list">
           <li><a href="#advantages" class="nav__link">Преимущества</a></li>
           <li><a href="#prices" class="nav__link">Услуги & Комбо</a></li>
-          <li><a href="#gallery" class="nav__link">Работы</a></li>
+          <li><a href="#gallery" class="nav__link">Портфолио</a></li>
           <li><a href="#faq" class="nav__link">Вопросы</a></li>
           <li><a href="#contacts" class="nav__link">Контакты</a></li>
         </ul>
@@ -36,7 +41,7 @@
       <div class="header__contacts">
         <a href="tel:+79990000000" class="header__phone">+7 (999) 000-00-00</a>
         <button type="button" class="btn btn--outline booking-btn" onclick="openBookingModal()">
-          Онлайн-запись
+          Записаться онлайн
         </button>
       </div>
     </div>
@@ -47,8 +52,8 @@
     <section class="hero">
       <div class="container hero__container">
         <div class="hero__content">
-          <span class="hero__badge">Приватный формат &bull; Безупречное качество</span>
-          <h1 class="hero__title">Архитектура и эстетика вашего маникюра и педикюра</h1>
+          <span class="hero__badge">Приватный кабинет &bull; Высокий стандарт</span>
+          <h1 class="hero__title">Архитектура и безупречная эстетика ваших ногтей</h1>
           <p class="hero__descriptor">
             Индивидуальный уход за ногтями, стерильность по стандартам СанПиН и атмосферный сервис в уютном приватном кабинете.
           </p>
@@ -56,7 +61,7 @@
             <button type="button" class="btn btn--primary booking-btn" onclick="openBookingModal()">
               Записаться на визит
             </button>
-            <a href="#prices" class="btn btn--ghost">Ознакомиться с картой услуг</a>
+            <a href="#prices" class="btn btn--ghost">Карта услуг и цен</a>
           </div>
         </div>
 
@@ -64,7 +69,7 @@
           <div class="hero__card-featured glass-card">
             <img src="hero_cabinet_interior.png" alt="Интерьер приватного кабинета ESTHÉTIQUE" class="hero__img">
             <div class="hero__img-overlay">
-              <span class="hero__location-tag">
+              <span class="hero__location-tag glass-card">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 Приватный кабинет &bull; м. Арбатская
               </span>
@@ -79,7 +84,7 @@
       <div class="container">
         <div class="section-header">
           <span class="section-header__subtitle">Ваш комфорт и безопасность</span>
-          <h2 class="section-header__title">Преимущества сервиса</h2>
+          <h2 class="section-header__title">Преимущества приватного сервиса</h2>
         </div>
 
         <div class="advantages__grid">
@@ -137,7 +142,9 @@
         </div>
 
         <!-- Популярные Комбо-сеты -->
-        <div class="prices__combo-title">Выгодные комплексы</div>
+        <div class="prices__section-label">
+          <span>Выгодные комплексы</span>
+        </div>
         <div class="prices__grid prices__grid--combo">
           <div class="price-card price-card--featured glass-card">
             <div class="price-card__badge">Хит визитов</div>
@@ -177,7 +184,9 @@
         </div>
 
         <!-- Основной Прайс-лист -->
-        <div class="prices__combo-title" style="margin-top: 48px;">Отдельные услуги</div>
+        <div class="prices__section-label" style="margin-top: 40px;">
+          <span>Отдельные услуги</span>
+        </div>
         <div class="prices__grid">
           <div class="price-card glass-card">
             <div class="price-card__header">
@@ -238,47 +247,85 @@
       </div>
     </section>
 
-    <!-- Секция Галереи -->
+    <!-- Секция Горизонтальной Галереи Портфолио (Скролл влево) -->
     <section id="gallery" class="gallery">
       <div class="container">
         <div class="section-header">
           <span class="section-header__subtitle">Портфолио работ</span>
-          <h2 class="section-header__title">Эстетика исполнения</h2>
-          <p class="section-header__hint">Нажмите на изображение для полноэкранного просмотра</p>
+          <h2 class="section-header__title">Галерея работ мастера</h2>
+          <p class="section-header__hint">Листайте фотографии влево или нажмите для полноэкранного просмотра</p>
         </div>
 
-        <div class="gallery__grid">
-          <div class="gallery__item glass-card" onclick="openLightbox(0)">
-            <img src="gallery_classic_nude.png" alt="Классический нюдовый маникюр Clean Girl" class="gallery__img">
-            <div class="gallery__zoom-badge">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
-              <span>Увеличить</span>
+        <!-- Горизонтальная интерактивная галерея -->
+        <div class="gallery__carousel-wrapper">
+          <button type="button" class="gallery__arrow gallery__arrow--prev" onclick="scrollGallery(-1)" aria-label="Назад">&#10094;</button>
+          
+          <div id="gallery-track" class="gallery__track">
+            <div class="gallery__card glass-card" onclick="openLightbox(0)">
+              <div class="gallery__image-holder">
+                <img src="gallery_classic_nude.png" alt="Классический нюдовый маникюр Clean Girl" class="gallery__img">
+                <div class="gallery__zoom-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                </div>
+              </div>
+              <div class="gallery__card-body">
+                <h3 class="gallery__card-title">Clean Girl Nude</h3>
+                <p class="gallery__card-sub">Классический идеальный блик</p>
+              </div>
+            </div>
+
+            <div class="gallery__card glass-card" onclick="openLightbox(1)">
+              <div class="gallery__image-holder">
+                <img src="gallery_japanese_manicure.png" alt="Японский эко-маникюр P.Shine" class="gallery__img">
+                <div class="gallery__zoom-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                </div>
+              </div>
+              <div class="gallery__card-body">
+                <h3 class="gallery__card-title">Японский уход P.Shine</h3>
+                <p class="gallery__card-sub">Естественный минеральный глянец</p>
+              </div>
+            </div>
+
+            <div class="gallery__card glass-card" onclick="openLightbox(2)">
+              <div class="gallery__image-holder">
+                <img src="gallery_french_design.png" alt="Минималистичный микро-френч" class="gallery__img">
+                <div class="gallery__zoom-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                </div>
+              </div>
+              <div class="gallery__card-body">
+                <h3 class="gallery__card-title">Микро-френч</h3>
+                <p class="gallery__card-sub">Утонченная классика</p>
+              </div>
+            </div>
+
+            <div class="gallery__card glass-card" onclick="openLightbox(3)">
+              <div class="gallery__image-holder">
+                <img src="gallery_classic_nude.png" alt="Архитектура и уход за ногтями" class="gallery__img">
+                <div class="gallery__zoom-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                </div>
+              </div>
+              <div class="gallery__card-body">
+                <h3 class="gallery__card-title">Эстетическая форма</h3>
+                <p class="gallery__card-sub">Выравнивание и точная кутикула</p>
+              </div>
             </div>
           </div>
 
-          <div class="gallery__item glass-card" onclick="openLightbox(1)">
-            <img src="gallery_japanese_manicure.png" alt="Японский эко-маникюр P.Shine" class="gallery__img">
-            <div class="gallery__zoom-badge">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
-              <span>Увеличить</span>
-            </div>
-          </div>
+          <button type="button" class="gallery__arrow gallery__arrow--next" onclick="scrollGallery(1)" aria-label="Вперед">&#10095;</button>
+        </div>
 
-          <div class="gallery__item glass-card" onclick="openLightbox(2)">
-            <img src="gallery_french_design.png" alt="Минималистичный микро-френч" class="gallery__img">
-            <div class="gallery__zoom-badge">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
-              <span>Увеличить</span>
-            </div>
+        <!-- Кнопка записи прямо под галереей -->
+        <div class="gallery__cta-block glass-card">
+          <div class="gallery__cta-content">
+            <h3 class="gallery__cta-title">Понравился результат?</h3>
+            <p class="gallery__cta-text">Забронируйте удобное время за 1 минуту без ожидания ответа в переписке.</p>
           </div>
-
-          <div class="gallery__item glass-card" onclick="openLightbox(3)">
-            <img src="gallery_classic_nude.png" alt="Архитектура и уход за ногтями" class="gallery__img">
-            <div class="gallery__zoom-badge">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
-              <span>Увеличить</span>
-            </div>
-          </div>
+          <button type="button" class="btn btn--primary booking-btn" onclick="openBookingModal('Из галереи работ')">
+            Записаться на визит
+          </button>
         </div>
       </div>
     </section>
@@ -375,7 +422,7 @@
     </button>
   </div>
 
-  <!-- Модальное окно Lightbox для фото галереи -->
+  <!-- Модальное окно Lightbox для полноэкранного фото -->
   <div id="lightbox" class="lightbox" aria-hidden="true" onclick="closeLightboxOnBackdrop(event)">
     <div class="lightbox__dialog">
       <button type="button" class="lightbox__close" onclick="closeLightbox()" aria-label="Закрыть">&times;</button>
@@ -388,11 +435,24 @@
     </div>
   </div>
 
-  <!-- Модальное окно онлайн-записи DIKIDI -->
+  <!-- Полноценное Модальное Окно DIKIDI (Стеклянный интерфейс без сжатия) -->
   <div id="dikidi-modal" class="lightbox" aria-hidden="true" onclick="closeDikidiModalOnBackdrop(event)">
-    <div class="dikidi-dialog glass-card">
-      <button type="button" class="lightbox__close dikidi-close" onclick="closeDikidiModal()" aria-label="Закрыть">&times;</button>
-      <iframe id="dikidi-frame" src="" title="Онлайн-запись DIKIDI" class="dikidi-iframe"></iframe>
+    <div class="dikidi-dialog glass-modal-window">
+      <div class="dikidi-dialog__header">
+        <div class="dikidi-dialog__title">
+          <span class="dikidi-dialog__badge">DIKIDI Online</span>
+          <h3>Онлайн-запись в кабинет</h3>
+        </div>
+        <div class="dikidi-dialog__controls">
+          <a href="https://dikidi.net/#widget=218952" target="_blank" class="btn btn--small btn--ghost" style="padding: 6px 12px; font-size: 0.78rem;">
+            Открыть в окне ↗
+          </a>
+          <button type="button" class="dikidi-close-btn" onclick="closeDikidiModal()" aria-label="Закрыть">&times;</button>
+        </div>
+      </div>
+      <div class="dikidi-dialog__body">
+        <iframe id="dikidi-frame" src="" title="Онлайн-запись DIKIDI" class="dikidi-iframe"></iframe>
+      </div>
     </div>
   </div>
 
@@ -402,7 +462,7 @@
 
   <script>
     // =========================================================================
-    // Прямая ссылка на ваш виджет онлайн-записи DIKIDI
+    // Ссылка на виджет DIKIDI
     // =========================================================================
     const DIKIDI_WIDGET_URL = "https://dikidi.net/#widget=218952";
 
@@ -436,12 +496,21 @@
       }
     }
 
+    // Скролл горизонтальной галереи
+    function scrollGallery(direction) {
+      const track = document.getElementById('gallery-track');
+      if (track) {
+        const scrollAmount = 340;
+        track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+      }
+    }
+
     // Lightbox галереи
     const galleryItems = [
-      { src: 'gallery_classic_nude.png', caption: 'Классический нюдовый маникюр Clean Girl' },
-      { src: 'gallery_japanese_manicure.png', caption: 'Японский эко-маникюр P.Shine' },
-      { src: 'gallery_french_design.png', caption: 'Минималистичный микро-френч' },
-      { src: 'gallery_classic_nude.png', caption: 'Архитектура и уход за ногтями' }
+      { src: 'gallery_classic_nude.png', caption: 'Clean Girl Nude — Классический идеальный блик' },
+      { src: 'gallery_japanese_manicure.png', caption: 'Японский уход P.Shine — Естественный минеральный глянец' },
+      { src: 'gallery_french_design.png', caption: 'Микро-френч — Утонченная классика' },
+      { src: 'gallery_classic_nude.png', caption: 'Эстетическая форма — Выравнивание и точная кутикула' }
     ];
 
     let currentImageIndex = 0;
@@ -484,7 +553,7 @@
       }
     });
 
-    // Оптимизированная GSAP-анимация без прыжков
+    // Оптимизированная GSAP-анимация
     document.addEventListener('DOMContentLoaded', () => {
       gsap.registerPlugin(ScrollTrigger);
 
@@ -511,12 +580,12 @@
 
         gsap.fromTo('.price-card', 
           { opacity: 0, y: 30 }, 
-          { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out', force3D: true, scrollTrigger: { trigger: '.prices__grid', start: 'top 80%' } }
+          { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out', force3D: true, scrollTrigger: { trigger: '.prices', start: 'top 80%' } }
         );
 
-        gsap.fromTo('.gallery__item', 
-          { opacity: 0, y: 25, scale: 0.97 }, 
-          { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.08, ease: 'power2.out', force3D: true, scrollTrigger: { trigger: '.gallery__grid', start: 'top 85%' } }
+        gsap.fromTo('.gallery__card', 
+          { opacity: 0, x: 40 }, 
+          { opacity: 1, x: 0, duration: 0.7, stagger: 0.12, ease: 'power2.out', force3D: true, scrollTrigger: { trigger: '.gallery__carousel-wrapper', start: 'top 85%' } }
         );
       });
     });
