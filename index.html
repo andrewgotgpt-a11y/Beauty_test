@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="ESTHÉTIQUE — Приватный кабинет премиального маникюра и эстетического педикюра в Москве (м. Арбатская). Безупречная стерильность, приватная атмосфера и онлайн-запись.">
+  <title>ESTHÉTIQUE — Приватный кабинет маникюра и педикюра</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Фоновые светящиеся сферы с градиентом (z-index: -1, pointer-events: none) -->
+  <div class="bg-glow-orb bg-glow-orb--1" aria-hidden="true"></div>
+  <div class="bg-glow-orb bg-glow-orb--2" aria-hidden="true"></div>
+  <div class="bg-glow-orb bg-glow-orb--3" aria-hidden="true"></div>
+
+  <!-- Шапка сайта -->
+  <header class="header">
+    <div class="container header__container">
+      <a href="#" class="logo" aria-label="ESTHÉTIQUE Studio">
+        <span class="logo__title">ESTHÉTIQUE</span>
+        <span class="logo__subtitle">Nail &amp; Pedicure Studio</span>
+      </a>
+
+      <nav class="nav" aria-label="Основная навигация">
+        <ul class="nav__list">
+          <li><a href="#advantages" class="nav__link">Преимущества</a></li>
+          <li><a href="#prices" class="nav__link">Услуги &amp; Комбо</a></li>
+          <li><a href="#gallery" class="nav__link">Портфолио</a></li>
+          <li><a href="#faq" class="nav__link">Вопросы</a></li>
+          <li><a href="#contacts" class="nav__link">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__contacts">
+        <a href="tel:+79990000000" class="header__phone" aria-label="Позвонить">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          +7 (999) 000-00-00
+        </a>
+        <button type="button" class="btn btn--outline booking-btn" onclick="openBookingModal('Шапка сайта')">
+          Записаться онлайн
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero-секция -->
+    <section class="hero">
+      <div class="container hero__container">
+        <div class="hero__content">
+          <span class="hero__badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            Приватный кабинет &bull; Высокий стандарт
+          </span>
+          <h1 class="hero__title">Архитектура и безупречная эстетика ваших ногтей</h1>
+          <p class="hero__descriptor">
+            Индивидуальный уход за ногтями, стерильность по стандартам СанПиН и атмосферный сервис в уютном приватном кабинете.
+          </p>
+          <div class="hero__actions">
+            <button type="button" class="btn btn--primary booking-btn" onclick="openBookingModal('Hero-секция')">
+              Записаться на визит
+            </button>
+            <a href="#prices" class="btn btn--ghost">Карта услуг и цен</a>
+          </div>
+        </div>
+
+        <div class="hero__image-wrapper">
+          <div class="hero__card-featured glass-card">
+            <img src="cabinet_interior.jpg" alt="Интерьер приватного кабинета ESTHÉTIQUE" class="hero__img" loading="eager">
+            <div class="hero__img-overlay">
+              <span class="hero__location-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                Приватный кабинет &bull; м. Арбатская
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section id="advantages" class="advantages">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__subtitle">Ваш комфорт и безопасность</span>
+          <h2 class="section-header__title">Преимущества приватного сервиса</h2>
+          <p class="section-header__hint">Внимание к каждой детали для вашего полного расслабления</p>
+        </div>
+
+        <div class="advantages__grid">
+          <article class="advantage-card glass-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                <line x1="6" y1="1" x2="6" y2="4"></line>
+                <line x1="10" y1="1" x2="10" y2="4"></line>
+                <line x1="14" y1="1" x2="14" y2="4"></line>
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Сервис &amp; Кофе</h3>
+            <p class="advantage-card__text">
+              Свежесваренный зерновой кофе, авторские травяные чаи, тихая расслабляющая музыка и внимание к каждой детали вашего отдыха.
+            </p>
+          </article>
+
+          <article class="advantage-card glass-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Стерильность по СанПиН</h3>
+            <p class="advantage-card__text">
+              Трехэтапная обработка инструментов, медицинский автоклав, одноразовые расходные материалы и обязательное вскрытие крафт-пакета при вас.
+            </p>
+          </article>
+
+          <article class="advantage-card glass-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="3" width="18" height="18" rx="3" ry="3"></rect>
+                <line x1="9" y1="3" x2="9" y2="21"></line>
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Приватный кабинет</h3>
+            <p class="advantage-card__text">
+              Уединенная атмосфера без шума салонных залов, посторонних запахов и суеты. Время визита принадлежит исключительно вам.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Прайс-лист & Комбо-сеты -->
+    <section id="prices" class="prices">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__subtitle">Прозрачная стоимость</span>
+          <h2 class="section-header__title">Карта услуг и Комбо-сеты</h2>
+          <p class="section-header__hint">Все расходные материалы, снятие и уход уже включены в стоимость</p>
+        </div>
+
+        <!-- Популярные Комбо-сеты -->
+        <div class="prices__section-label">
+          <span>Выгодные комплексы</span>
+        </div>
+        <div class="prices__grid prices__grid--combo">
+          <div class="price-card price-card--featured glass-card">
+            <div class="price-card__badge">Хит визитов</div>
+            <div class="price-card__header">
+              <h3 class="price-card__title">Комбо «Clean Girl»</h3>
+              <span class="price-card__price">5 800 ₽</span>
+            </div>
+            <p class="price-card__desc">
+              Комплексный маникюр с однотонным покрытием + Эстетический Smart-педикюр с деликатной обработкой стоп.
+            </p>
+            <div class="price-card__footer">
+              <span class="price-card__duration">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 16 14"></polyline>
+                </svg>
+                3 ч 15 мин
+              </span>
+              <button type="button" class="btn btn--primary btn--small booking-btn" onclick="openBookingModal('Комбо Clean Girl')">
+                Записаться
+              </button>
+            </div>
+          </div>
+
+          <div class="price-card price-card--featured glass-card">
+            <div class="price-card__badge">Эко-Восстановление</div>
+            <div class="price-card__header">
+              <h3 class="price-card__title">Комбо «P.Shine Care»</h3>
+              <span class="price-card__price">4 500 ₽</span>
+            </div>
+            <p class="price-card__desc">
+              Японский минеральный эко-маникюр + гигиенический педикюр с запечатыванием ногтей натуральной пастой P.Shine.
+            </p>
+            <div class="price-card__footer">
+              <span class="price-card__duration">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 16 14"></polyline>
+                </svg>
+                2 ч 30 мин
+              </span>
+              <button type="button" class="btn btn--primary btn--small booking-btn" onclick="openBookingModal('Комбо P.Shine Care')">
+                Записаться
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Основной Прайс-лист отдельных услуг -->
+        <div class="prices__section-label" style="margin-top: 44px;">
+          <span>Отдельные услуги</span>
+        </div>
+        <div class="prices__grid">
+          <div class="price-card glass-card">
+            <div class="price-card__header">
+              <h3 class="price-card__title">Комплексный маникюр</h3>
+              <span class="price-card__price">2 800 ₽</span>
+            </div>
+            <p class="price-card__desc">
+              Снятие предыдущего покрытия, гигиеническая обработка (комби/аппаратный), выравнивание ногтевой пластины и покрытие.
+            </p>
+            <div class="price-card__footer">
+              <span class="price-card__duration">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 16 14"></polyline></svg>
+                1 ч 45 мин
+              </span>
+              <button type="button" class="btn btn--outline btn--small booking-btn" onclick="openBookingModal('Комплексный маникюр')">
+                Записаться
+              </button>
+            </div>
+          </div>
+
+          <div class="price-card glass-card">
+            <div class="price-card__header">
+              <h3 class="price-card__title">Smart-педикюр эстетический</h3>
+              <span class="price-card__price">3 500 ₽</span>
+            </div>
+            <p class="price-card__desc">
+              Аппаратная обработка стопы smart-дисками до зеркальной гладкости, пальчиков, выравнивание и стойкое покрытие.
+            </p>
+            <div class="price-card__footer">
+              <span class="price-card__duration">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 16 14"></polyline></svg>
+                1 ч 30 мин
+              </span>
+              <button type="button" class="btn btn--outline btn--small booking-btn" onclick="openBookingModal('Smart-педикюр')">
+                Записаться
+              </button>
+            </div>
+          </div>
+
+          <div class="price-card glass-card">
+            <div class="price-card__header">
+              <h3 class="price-card__title">Японский эко-маникюр</h3>
+              <span class="price-card__price">2 400 ₽</span>
+            </div>
+            <p class="price-card__desc">
+              Восстанавливающий уход за натуральными ногтями с запечатыванием диатомовой глины и пчелиного воска P.Shine.
+            </p>
+            <div class="price-card__footer">
+              <span class="price-card__duration">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 16 14"></polyline></svg>
+                1 ч 15 мин
+              </span>
+              <button type="button" class="btn btn--outline btn--small booking-btn" onclick="openBookingModal('Японский маникюр')">
+                Записаться
+              </button>
+            </div>
+          </div>
+
+          <div class="price-card glass-card">
+            <div class="price-card__header">
+              <h3 class="price-card__title">Гигиенический педикюр</h3>
+              <span class="price-card__price">2 500 ₽</span>
+            </div>
+            <p class="price-card__desc">
+              Полная гигиеническая обработка стоп и пальчиков без покрытия, очищение, мягкий пилинг и ухаживающий массаж с кремом.
+            </p>
+            <div class="price-card__footer">
+              <span class="price-card__duration">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 16 14"></polyline></svg>
+                1 час
+              </span>
+              <button type="button" class="btn btn--outline btn--small booking-btn" onclick="openBookingModal('Гигиенический педикюр')">
+                Записаться
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция Горизонтальной Галереи Портфолио (Скролл влево) -->
+    <section id="gallery" class="gallery">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__subtitle">Портфолио работ</span>
+          <h2 class="section-header__title">Галерея работ мастера</h2>
+          <p class="section-header__hint">Листайте фотографии влево или нажмите для полноэкранного просмотра деталей</p>
+        </div>
+
+        <!-- Горизонтальная интерактивная галерея со скролл-треком -->
+        <div class="gallery__carousel-wrapper">
+          <button type="button" class="gallery__arrow gallery__arrow--prev" onclick="scrollGallery(-1)" aria-label="Предыдущее фото">
+            &#10094;
+          </button>
+          
+          <div id="gallery-track" class="gallery__track">
+            <!-- Работа 1 -->
+            <div class="gallery__card glass-card" onclick="openLightbox(0)">
+              <div class="gallery__image-holder">
+                <img src="gallery_nude.jpg" alt="Классический нюдовый маникюр Clean Girl" class="gallery__img" loading="lazy">
+                <div class="gallery__zoom-icon" aria-label="Увеличить фото">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                  </svg>
+                </div>
+              </div>
+              <div class="gallery__card-body">
+                <h3 class="gallery__card-title">Clean Girl Nude</h3>
+                <p class="gallery__card-sub">Классический идеальный блик</p>
+              </div>
+            </div>
+
+            <!-- Работа 2 -->
+            <div class="gallery__card glass-card" onclick="openLightbox(1)">
+              <div class="gallery__image-holder">
+                <img src="gallery_pshine.jpg" alt="Японский эко-уход P.Shine" class="gallery__img" loading="lazy">
+                <div class="gallery__zoom-icon" aria-label="Увеличить фото">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                  </svg>
+                </div>
+              </div>
+              <div class="gallery__card-body">
+                <h3 class="gallery__card-title">Японский уход P.Shine</h3>
+                <p class="gallery__card-sub">Естественный минеральный глянец</p>
+              </div>
+            </div>
+
+            <!-- Работа 3 -->
+            <div class="gallery__card glass-card" onclick="openLightbox(2)">
+              <div class="gallery__image-holder">
+                <img src="gallery_french.jpg" alt="Минималистичный микро-френч" class="gallery__img" loading="lazy">
+                <div class="gallery__zoom-icon" aria-label="Увеличить фото">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                  </svg>
+                </div>
+              </div>
+              <div class="gallery__card-body">
+                <h3 class="gallery__card-title">Микро-френч</h3>
+                <p class="gallery__card-sub">Утонченная классика стиля</p>
+              </div>
+            </div>
+
+            <!-- Работа 4 -->
+            <div class="gallery__card glass-card" onclick="openLightbox(3)">
+              <div class="gallery__image-holder">
+                <img src="gallery_pedicure.jpg" alt="Эстетический Smart-педикюр" class="gallery__img" loading="lazy">
+                <div class="gallery__zoom-icon" aria-label="Увеличить фото">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                  </svg>
+                </div>
+              </div>
+              <div class="gallery__card-body">
+                <h3 class="gallery__card-title">Smart-педикюр &amp; Эстетика</h3>
+                <p class="gallery__card-sub">Шелковая кожа и деликатный нюд</p>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="gallery__arrow gallery__arrow--next" onclick="scrollGallery(1)" aria-label="Следующее фото">
+            &#10095;
+          </button>
+        </div>
+
+        <!-- Акцентная стеклянная плашка с призывом прямо под галереей -->
+        <div class="gallery__cta-block glass-card">
+          <div class="gallery__cta-content">
+            <h3 class="gallery__cta-title">Понравился результат?</h3>
+            <p class="gallery__cta-text">Забронируйте удобное время за 1 минуту без ожидания ответа в переписке.</p>
+          </div>
+          <button type="button" class="btn btn--primary booking-btn" onclick="openBookingModal('Из галереи работ')">
+            Записаться на визит
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция FAQ (Нативный HTML-аккордеон <details name="faq">) -->
+    <section id="faq" class="faq-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__subtitle">Ответы на вопросы</span>
+          <h2 class="section-header__title">Часто задаваемые вопросы</h2>
+          <p class="section-header__hint">Всё, что важно знать перед первым визитом в кабинет</p>
+        </div>
+
+        <div class="faq-accordion">
+          <details name="faq" open class="glass-card">
+            <summary class="faq-summary">
+              <span>Как проходит стерилизация инструментов?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-content">
+              <p>Инструменты проходят трехэтапную обработку строго по нормам СанПиН: дезинфекция в сертифицированном растворе, механическая ультразвуковая чистка и стерилизация в медицинском автоклаве при температуре 134°C. Крафт-пакет со стерильным набором вскрывается исключительно в вашем присутствии.</p>
+            </div>
+          </details>
+
+          <details name="faq" class="glass-card">
+            <summary class="faq-summary">
+              <span>Сколько времени занимает комплексный визит?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-content">
+              <p>Комплексный маникюр с однотонным покрытием занимает в среднем 1 час 45 минут. Мы никогда не торопимся в ущерб качеству, тщательно прорабатывая форму, подкутикульное пространство и создавая долговечные блики.</p>
+            </div>
+          </details>
+
+          <details name="faq" class="glass-card">
+            <summary class="faq-summary">
+              <span>В чем преимущество формата приватного кабинета?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-content">
+              <p>Вы находитесь в кабинете один на один с мастером — без шума салонных залов, параллельных разговоров и навязчивых посторонних взглядов. Для вас подготовлены свежесваренный зерновой кофе, авторский чай, уютный текстиль и персонализированная музыкальная подборка.</p>
+            </div>
+          </details>
+
+          <details name="faq" class="glass-card">
+            <summary class="faq-summary">
+              <span>Можно ли совместить маникюр и педикюр в один день?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-content">
+              <p>Да, именно для этого созданы наши Комбо-сеты «Clean Girl» и «P.Shine Care». Вы можете за один визит получить полный комплекс преображения ногтей и стоп, сэкономив своё время и бюджет.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Подвал сайта -->
+  <footer id="contacts" class="footer">
+    <div class="container footer__container">
+      <div class="footer__brand">
+        <a href="#" class="logo">
+          <span class="logo__title">ESTHÉTIQUE</span>
+          <span class="logo__subtitle">Private Master Studio</span>
+        </a>
+        <p class="footer__tagline">Ваша персональная территория эстетики, идеальной формы и глубокого комфорта.</p>
+      </div>
+
+      <div class="footer__info">
+        <div class="footer__column">
+          <h4 class="footer__heading">Локация</h4>
+          <p class="footer__text">г. Москва, ул. Арбат, д. 24</p>
+          <p class="footer__subtext">3–5 минут от м. Арбатская (приватный вход, тихий двор)</p>
+        </div>
+
+        <div class="footer__column">
+          <h4 class="footer__heading">График визитов</h4>
+          <p class="footer__text">Пн — Сб: 10:00 — 21:00</p>
+          <p class="footer__subtext">Воскресенье: по предварительной записи</p>
+        </div>
+
+        <div class="footer__column">
+          <h4 class="footer__heading">Связь &amp; Мессенджеры</h4>
+          <div class="footer__socials">
+            <a href="https://t.me/" target="_blank" rel="noopener" class="footer__social-link">Telegram-чат</a>
+            <a href="https://wa.me/" target="_blank" rel="noopener" class="footer__social-link">WhatsApp</a>
+            <a href="tel:+79990000000" class="footer__social-link">+7 (999) 000-00-00</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-container">
+        <p>&copy; 2026 ESTHÉTIQUE Nail &amp; Pedicure Studio. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Мобильная плавающая кнопка (Glass Sticky CTA Bar) -->
+  <div class="mobile-sticky-bar">
+    <button type="button" class="btn btn--primary btn--full booking-btn" onclick="openBookingModal('Мобильная плавающая кнопка')">
+      Записаться на визит
+    </button>
+  </div>
+
+  <!-- Модальное окно Lightbox для полноэкранного фото -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" onclick="closeLightboxOnBackdrop(event)">
+    <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="Просмотр фотографии">
+      <button type="button" class="lightbox__close" onclick="closeLightbox()" aria-label="Закрыть">&times;</button>
+      <button type="button" class="lightbox__nav lightbox__nav--prev" onclick="changeLightboxImage(-1)" aria-label="Предыдущее фото">&#10094;</button>
+      <div class="lightbox__body">
+        <img id="lightbox-img" src="" alt="" class="lightbox__image">
+        <p id="lightbox-caption" class="lightbox__caption"></p>
+      </div>
+      <button type="button" class="lightbox__nav lightbox__nav--next" onclick="changeLightboxImage(1)" aria-label="Следующее фото">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- Модальное окно онлайн-записи DIKIDI (Стеклянный интерфейс без сжатия) -->
+  <div id="dikidi-modal" class="dikidi-modal" aria-hidden="true" onclick="closeDikidiModalOnBackdrop(event)">
+    <div class="dikidi-dialog glass-modal-window" role="dialog" aria-modal="true" aria-label="Онлайн-запись DIKIDI">
+      <div class="dikidi-dialog__header">
+        <div class="dikidi-dialog__title">
+          <span class="dikidi-dialog__badge">DIKIDI Online</span>
+          <h3>Онлайн-запись в кабинет</h3>
+        </div>
+        <div class="dikidi-dialog__controls">
+          <a href="https://dikidi.net/#widget=218952" target="_blank" rel="noopener" class="btn btn--small btn--ghost" style="padding: 6px 12px; font-size: 0.78rem;">
+            Открыть в окне ↗
+          </a>
+          <button type="button" class="dikidi-close-btn" onclick="closeDikidiModal()" aria-label="Закрыть модальное окно">&times;</button>
+        </div>
+      </div>
+      <div class="dikidi-dialog__body">
+        <iframe id="dikidi-frame" src="" title="Онлайн-запись DIKIDI" class="dikidi-iframe" allow="camera; microphone; autoplay; encrypted-media"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- GSAP Animation Library (Safe progressive enhancement) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <script>
+    // =========================================================================
+    // DIKIDI Виджет онлайн-записи (Lazy loading)
+    // =========================================================================
+    const DIKIDI_WIDGET_URL = "https://dikidi.net/#widget=218952";
+
+    function openBookingModal(source = '') {
+      const modal = document.getElementById('dikidi-modal');
+      const frame = document.getElementById('dikidi-frame');
+
+      if (modal && frame) {
+        // Динамическая подгрузка src только при открытии, чтобы не тормозить стартовую страницу
+        if (!frame.src || frame.src === '' || frame.src === 'about:blank') {
+          frame.src = DIKIDI_WIDGET_URL;
+        }
+        modal.classList.add('is-active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDikidiModal() {
+      const modal = document.getElementById('dikidi-modal');
+      const frame = document.getElementById('dikidi-frame');
+
+      if (modal) {
+        modal.classList.remove('is-active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function closeDikidiModalOnBackdrop(event) {
+      if (event.target.id === 'dikidi-modal') {
+        closeDikidiModal();
+      }
+    }
+
+    // =========================================================================
+    // Горизонтальная галерея (Скролл влево / вправо)
+    // =========================================================================
+    function scrollGallery(direction) {
+      const track = document.getElementById('gallery-track');
+      if (track) {
+        const card = track.querySelector('.gallery__card');
+        const scrollAmount = card ? card.offsetWidth + 24 : 320;
+        track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+      }
+    }
+
+    // =========================================================================
+    // Lightbox галереи
+    // =========================================================================
+    const galleryItems = [
+      { src: 'gallery_nude.jpg', caption: 'Clean Girl Nude — Классический идеальный блик' },
+      { src: 'gallery_pshine.jpg', caption: 'Японский уход P.Shine — Естественный минеральный глянец' },
+      { src: 'gallery_french.jpg', caption: 'Микро-френч — Утонченная классика стиля' },
+      { src: 'gallery_pedicure.jpg', caption: 'Smart-педикюр & Эстетика — Шелковая кожа и деликатный нюд' }
+    ];
+
+    let currentImageIndex = 0;
+
+    function openLightbox(index) {
+      currentImageIndex = index;
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      const caption = document.getElementById('lightbox-caption');
+
+      if (lightbox && img && caption && galleryItems[index]) {
+        img.src = galleryItems[index].src;
+        img.alt = galleryItems[index].caption;
+        caption.textContent = galleryItems[index].caption;
+
+        lightbox.classList.add('is-active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox) {
+        lightbox.classList.remove('is-active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function closeLightboxOnBackdrop(event) {
+      if (event.target.id === 'lightbox') {
+        closeLightbox();
+      }
+    }
+
+    function changeLightboxImage(direction) {
+      currentImageIndex = (currentImageIndex + direction + galleryItems.length) % galleryItems.length;
+      openLightbox(currentImageIndex);
+    }
+
+    // Обработка клавиши Escape для закрытия всех модальных окон
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+        closeDikidiModal();
+      }
+      if (e.key === 'ArrowLeft') {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox && lightbox.classList.contains('is-active')) {
+          changeLightboxImage(-1);
+        }
+      }
+      if (e.key === 'ArrowRight') {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox && lightbox.classList.contains('is-active')) {
+          changeLightboxImage(1);
+        }
+      }
+    });
+
+    // =========================================================================
+    // Плавная безопасная анимация (GSAP)
+    // Не использует глобальный opacity: 0 в CSS — при сбое JS всё остаётся видимым!
+    // =========================================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      // Поддержка взаимного закрытия <details name="faq"> на старых движках
+      const detailsList = document.querySelectorAll('details[name="faq"]');
+      detailsList.forEach((targetDetail) => {
+        targetDetail.addEventListener('toggle', () => {
+          if (targetDetail.open) {
+            detailsList.forEach((detail) => {
+              if (detail !== targetDetail && detail.open) {
+                detail.removeAttribute('open');
+              }
+            });
+          }
+        });
+      });
+
+      // Инициализация GSAP, если скрипт загружен
+      if (typeof gsap !== 'undefined') {
+        if (typeof ScrollTrigger !== 'undefined') {
+          gsap.registerPlugin(ScrollTrigger);
+        }
+
+        const mm = gsap.matchMedia();
+
+        mm.add('(prefers-reduced-motion: no-preference)', () => {
+          // Hero появление
+          gsap.from('.hero__badge', { opacity: 0, y: 18, duration: 0.6, ease: 'power2.out' });
+          gsap.from('.hero__title', { opacity: 0, y: 22, duration: 0.7, delay: 0.1, ease: 'power2.out' });
+          gsap.from('.hero__descriptor', { opacity: 0, y: 18, duration: 0.6, delay: 0.2, ease: 'power2.out' });
+          gsap.from('.hero__actions', { opacity: 0, y: 18, duration: 0.6, delay: 0.3, ease: 'power2.out' });
+          gsap.from('.hero__card-featured', { opacity: 0, scale: 0.96, duration: 0.8, delay: 0.2, ease: 'power2.out' });
+
+          if (typeof ScrollTrigger !== 'undefined') {
+            gsap.utils.toArray('.section-header').forEach((header) => {
+              gsap.from(header, {
+                opacity: 0,
+                y: 24,
+                duration: 0.7,
+                ease: 'power2.out',
+                scrollTrigger: { trigger: header, start: 'top 88%' }
+              });
+            });
+
+            gsap.from('.advantage-card', {
+              opacity: 0,
+              y: 28,
+              duration: 0.6,
+              stagger: 0.12,
+              ease: 'power2.out',
+              scrollTrigger: { trigger: '.advantages__grid', start: 'top 85%' }
+            });
+
+            gsap.from('.price-card', {
+              opacity: 0,
+              y: 28,
+              duration: 0.6,
+              stagger: 0.1,
+              ease: 'power2.out',
+              scrollTrigger: { trigger: '.prices', start: 'top 85%' }
+            });
+
+            gsap.from('.gallery__card', {
+              opacity: 0,
+              x: 30,
+              duration: 0.6,
+              stagger: 0.08,
+              ease: 'power2.out',
+              scrollTrigger: { trigger: '.gallery__track', start: 'top 85%' }
+            });
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
