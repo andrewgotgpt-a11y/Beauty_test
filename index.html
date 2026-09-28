@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" class="has-js">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -15,12 +15,12 @@
 </head>
 <body>
 
-  <!-- Динамические светящиеся сферы для эффектного Glassmorphism -->
+  <!-- Динамические светящиеся сферы на заднем плане (z-index: -1) -->
   <div class="bg-glow-orb bg-glow-orb--1" aria-hidden="true"></div>
   <div class="bg-glow-orb bg-glow-orb--2" aria-hidden="true"></div>
   <div class="bg-glow-orb bg-glow-orb--3" aria-hidden="true"></div>
 
-  <!-- Хедер сайта -->
+  <!-- Шапка сайта -->
   <header class="header">
     <div class="container header__container">
       <a href="#" class="logo" aria-label="На главную">
@@ -444,7 +444,7 @@
           <h3>Онлайн-запись в кабинет</h3>
         </div>
         <div class="dikidi-dialog__controls">
-          <a href="https://dikidi.net/#widget=218952" target="_blank" class="btn btn--small btn--ghost" style="padding: 6px 12px; font-size: 0.78rem;">
+          <a href="https://dikidi.net/#widget=218952" target="_blank" rel="noopener" class="btn btn--small btn--ghost" style="padding: 6px 12px; font-size: 0.78rem;">
             Открыть в окне ↗
           </a>
           <button type="button" class="dikidi-close-btn" onclick="closeDikidiModal()" aria-label="Закрыть">&times;</button>
@@ -500,7 +500,7 @@
     function scrollGallery(direction) {
       const track = document.getElementById('gallery-track');
       if (track) {
-        const scrollAmount = 340;
+        const scrollAmount = 320;
         track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
       }
     }
@@ -553,41 +553,49 @@
       }
     });
 
-    // Оптимизированная GSAP-анимация
+    // Безопасная GSAP-анимация (не скрывает контент, если GSAP недоступен)
     document.addEventListener('DOMContentLoaded', () => {
-      gsap.registerPlugin(ScrollTrigger);
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
 
-      const mm = gsap.matchMedia();
+        const mm = gsap.matchMedia();
 
-      mm.add('(prefers-reduced-motion: no-preference)', () => {
-        gsap.fromTo('.hero__badge', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' });
-        gsap.fromTo('.hero__title', { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.7, delay: 0.15, ease: 'power2.out' });
-        gsap.fromTo('.hero__descriptor', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, delay: 0.3, ease: 'power2.out' });
-        gsap.fromTo('.hero__actions', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, delay: 0.4, ease: 'power2.out' });
-        gsap.fromTo('.hero__card-featured', { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.8, delay: 0.2, ease: 'power2.out', force3D: true });
+        mm.add('(prefers-reduced-motion: no-preference)', () => {
+          gsap.from('.hero__badge', { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' });
+          gsap.from('.hero__title', { opacity: 0, y: 25, duration: 0.7, delay: 0.1, ease: 'power2.out' });
+          gsap.from('.hero__descriptor', { opacity: 0, y: 20, duration: 0.6, delay: 0.2, ease: 'power2.out' });
+          gsap.from('.hero__actions', { opacity: 0, y: 20, duration: 0.6, delay: 0.3, ease: 'power2.out' });
+          gsap.from('.hero__card-featured', { opacity: 0, scale: 0.96, duration: 0.8, delay: 0.2, ease: 'power2.out' });
 
-        gsap.utils.toArray('.section-header').forEach((header) => {
-          gsap.fromTo(header, 
-            { opacity: 0, y: 25 }, 
-            { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: header, start: 'top 85%' } }
-          );
+          gsap.utils.toArray('.section-header').forEach((header) => {
+            gsap.from(header, {
+              opacity: 0,
+              y: 25,
+              duration: 0.7,
+              ease: 'power2.out',
+              scrollTrigger: { trigger: header, start: 'top 88%' }
+            });
+          });
+
+          gsap.from('.advantage-card', {
+            opacity: 0,
+            y: 30,
+            duration: 0.6,
+            stagger: 0.12,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.advantages__grid', start: 'top 85%' }
+          });
+
+          gsap.from('.price-card', {
+            opacity: 0,
+            y: 30,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.prices', start: 'top 85%' }
+          });
         });
-
-        gsap.fromTo('.advantage-card', 
-          { opacity: 0, y: 30 }, 
-          { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: 'power2.out', force3D: true, scrollTrigger: { trigger: '.advantages__grid', start: 'top 80%' } }
-        );
-
-        gsap.fromTo('.price-card', 
-          { opacity: 0, y: 30 }, 
-          { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out', force3D: true, scrollTrigger: { trigger: '.prices', start: 'top 80%' } }
-        );
-
-        gsap.fromTo('.gallery__card', 
-          { opacity: 0, x: 40 }, 
-          { opacity: 1, x: 0, duration: 0.7, stagger: 0.12, ease: 'power2.out', force3D: true, scrollTrigger: { trigger: '.gallery__carousel-wrapper', start: 'top 85%' } }
-        );
-      });
+      }
     });
   </script>
 </body>
