@@ -4,134 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Онлайн-запись на маникюр</title>
+    <!-- Подключаем Telegram Web App API -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         :root {
-            --bg-main: #121214;
-            --card-bg: #1c1c1f;
-            --border-color: #2d2d32;
+            --bg-main: #121214; --card-bg: #1c1c1f; --border-color: #2d2d32;
             --accent-gradient: linear-gradient(135deg, #ff6b8b, #ff8e53);
-            --accent-hover: #ff4757;
-            --text-main: #ffffff;
-            --text-secondary: #a0a0ab;
-            --success: #2ed573;
+            --text-main: #ffffff; --text-secondary: #a0a0ab; --success: #2ed573;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: var(--bg-main);
-            color: var(--text-main);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            box-sizing: border-box;
+            background: var(--bg-main); color: var(--text-main); margin: 0; padding: 20px;
+            display: flex; justify-content: center; align-items: center; min-height: 100vh; box-sizing: border-box;
         }
         .container {
-            background: var(--card-bg);
-            width: 100%;
-            max-width: 400px;
-            padding: 28px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid var(--border-color);
-            box-sizing: border-box;
+            background: var(--card-bg); width: 100%; max-width: 400px; padding: 28px;
+            border-radius: 20px; border: 1px solid var(--border-color); box-sizing: border-box;
         }
-        h2 {
-            margin-top: 0;
-            font-size: 22px;
-            text-align: center;
-            color: #ff85a2;
-            margin-bottom: 20px;
-        }
-        .form-group {
-            margin-bottom: 16px;
-        }
-        label {
-            display: block;
-            font-size: 13px;
-            font-weight: 500;
-            margin-bottom: 6px;
-            color: var(--text-secondary);
-        }
+        h2 { margin-top: 0; font-size: 22px; text-align: center; color: #ff85a2; margin-bottom: 20px; }
+        .form-group { margin-bottom: 16px; }
+        label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--text-secondary); }
         select, input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #333338;
-            border-radius: 12px;
-            font-size: 15px;
-            box-sizing: border-box;
-            background: #252529;
-            color: var(--text-main);
-            outline: none;
-            transition: border-color 0.2s;
+            width: 100%; padding: 12px; border: 1px solid #333338; border-radius: 12px;
+            font-size: 15px; box-sizing: border-box; background: #252529; color: var(--text-main); outline: none;
         }
-        select:focus, input:focus {
-            border-color: #ff6b8b;
-        }
+        select:focus, input:focus { border-color: #ff6b8b; }
         button {
-            width: 100%;
-            background: var(--accent-gradient);
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: opacity 0.2s;
+            width: 100%; background: var(--accent-gradient); color: white; border: none;
+            padding: 14px; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px;
         }
-        button:hover {
-            opacity: 0.9;
-        }
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        #result-card {
-            display: none;
-            text-align: center;
-        }
-        .success-icon {
-            font-size: 48px;
-            color: var(--success);
-            margin-bottom: 10px;
-        }
-        .ics-btn {
-            background: #2f3542;
-            margin-top: 12px;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-            padding: 14px;
-            border-radius: 12px;
-            color: white;
-            font-weight: bold;
-            font-size: 15px;
-            box-sizing: border-box;
-            transition: background 0.2s;
-        }
-        .ics-btn:hover {
-            background: #404b5d;
-        }
-        .loader {
-            display: none;
-            text-align: center;
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-top: 12px;
-        }
-        .secondary-btn {
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-color);
-            margin-top: 10px;
-        }
-        .secondary-btn:hover {
-            background: rgba(255,255,255,0.05);
-            color: white;
-        }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        #result-card { display: none; text-align: center; }
+        .success-icon { font-size: 48px; color: var(--success); margin-bottom: 10px; }
+        .loader { display: none; text-align: center; font-size: 14px; color: var(--text-secondary); margin-top: 12px; }
     </style>
 </head>
 <body>
@@ -146,17 +51,14 @@
             </div>
 
             <div class="form-group">
-                <label for="phone">Телефон</label>
-                <input type="tel" id="phone" placeholder="+7 (999) 000-00-00" required>
+                <label for="phone">Телефон (по желанию)</label>
+                <input type="tel" id="phone" placeholder="+7 (999) 000-00-00">
             </div>
 
             <div class="form-group">
                 <label for="service">Выберите услугу</label>
                 <select id="service" required>
-                    <option value="" disabled selected>Выберите услугу из списка</option>
-                    <option value="Снятие + Маникюр + Гель-лак">Снятие + Маникюр + Гель-лак (2000 ₽)</option>
-                    <option value="Наращивание ногтей">Наращивание ногтей (2800 ₽)</option>
-                    <option value="Гигиенический маникюр">Гигиенический маникюр (1200 ₽)</option>
+                    <option value="" disabled selected>Загружаем прайс...</option>
                 </select>
             </div>
 
@@ -185,102 +87,78 @@
         <div class="success-icon">✓</div>
         <h2>Вы успешно записаны!</h2>
         <p id="successDetails" style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.5;"></p>
-        
-        <!-- Кнопка добавления в календарь (iPhone / Android) -->
-        <a id="icsDownloadBtn" class="ics-btn" download="appointment.ics">📅 Добавить в календарь</a>
-        <button class="secondary-btn" onclick="location.reload();">Записаться еще</button>
+        <p style="font-size: 12px; color: #57606f;">Подтверждение отправлено вам в Telegram.</p>
+        <button style="background: #2f3542; margin-top: 10px;" onclick="window.Telegram.WebApp.close();">Закрыть</button>
     </div>
 </div>
 
 <script>
-    // ⚠️ ВСТАВЬ СЮДА СВОЙ АКТУАЛЬНЫЙ URL ВЕБ-ПРИЛОЖЕНИЯ APPS SCRIPT (заканчивается на /exec)
+    // ⚠️ ВСТАВЬ СЮДА СВОЙ URL ОТ APPS SCRIPT
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybL6T_uOPgDej4VJkzqxOEnMjWpiqmzLsjK64IpPiXzqpkGo0YEPmyfFtsD65KH6pkcw/exec";
 
-    // Установка минимальной даты — сегодня
+    // Инициализация Telegram Web App
+    const tg = window.Telegram.WebApp;
+    tg.expand(); // Развернуть на весь экран
+    const clientTelegramId = tg.initDataUnsafe?.user?.id || ""; // Берем ID профиля
+
+    // Установка минимальной даты
     const todayStr = new Date().toISOString().split('T')[0];
     document.getElementById('date').min = todayStr;
     document.getElementById('date').value = todayStr;
 
+    // Загрузка динамического прайса
+    async function loadPrices() {
+        try {
+            const response = await fetch(`${APPS_SCRIPT_URL}?action=prices`);
+            const prices = await response.json();
+            const serviceSelect = document.getElementById('service');
+            serviceSelect.innerHTML = '<option value="" disabled selected>Выберите услугу из списка</option>';
+            
+            prices.forEach(item => {
+                const option = document.createElement('option');
+                option.value = `${item.name}`;
+                option.textContent = `${item.name} — ${item.price} ₽`;
+                serviceSelect.appendChild(option);
+            });
+        } catch (error) {
+            document.getElementById('service').innerHTML = '<option value="" disabled selected>Ошибка загрузки прайса</option>';
+        }
+    }
+    loadPrices();
+
+    // Отправка формы
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
         e.preventDefault();
 
         const submitBtn = document.getElementById('submitBtn');
         const loader = document.getElementById('loader');
-        
-        submitBtn.style.display = 'none';
-        loader.style.display = 'block';
+        submitBtn.style.display = 'none'; loader.style.display = 'block';
 
         const formData = {
             name: document.getElementById('name').value.trim(),
             phone: document.getElementById('phone').value.trim(),
             service: document.getElementById('service').value,
-            date: document.getElementById('date').value, // YYYY-MM-DD
-            time: document.getElementById('time').value  // HH:MM
+            date: document.getElementById('date').value,
+            time: document.getElementById('time').value,
+            telegramId: clientTelegramId // Передаем ID клиента на бэкенд
         };
 
         try {
-            // Отправка POST-запроса на бэкенд Google Apps Script
             await fetch(APPS_SCRIPT_URL, {
                 method: 'POST',
-                mode: 'no-cors', // Важно для обхода CORS в Google Apps Script
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
 
-            // Показываем экран успешной брони и генерируем .ics
-            showSuccessScreen(formData);
-
+            document.getElementById('booking-form-container').style.display = 'none';
+            document.getElementById('result-card').style.display = 'block';
+            document.getElementById('successDetails').innerHTML = `Ждем вас <b>${formData.date}</b> в <b>${formData.time}</b><br>Услуга: <b>${formData.service}</b>`;
         } catch (error) {
-            alert('Ошибка соединения с сервером. Попробуйте еще раз.');
-            submitBtn.style.display = 'block';
-            loader.style.display = 'none';
+            alert('Ошибка соединения с сервером.');
+            submitBtn.style.display = 'block'; loader.style.display = 'none';
         }
     });
-
-    function showSuccessScreen(data) {
-        document.getElementById('booking-form-container').style.display = 'none';
-        document.getElementById('result-card').style.display = 'block';
-        
-        document.getElementById('successDetails').innerHTML = 
-            `Ждем вас <b>${data.date}</b> в <b>${data.time}</b><br>` +
-            `Услуга: <b>${data.service}</b>`;
-
-        // Генерация .ics файла прямо в браузере (для Apple Calendar / Google Calendar)
-        const [year, month, day] = data.date.split('-');
-        const [hours, minutes] = data.time.split(':');
-        
-        const startDate = new Date(year, month - 1, day, hours, minutes);
-        const endDate = new Date(startDate.getTime() + (2 * 60 * 60 * 1000)); // Длительность 2 часа
-
-        function formatIcsDate(d) {
-            return d.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
-        }
-
-        const icsContent = [
-            "BEGIN:VCALENDAR",
-            "VERSION:2.0",
-            "PRODID:-//Beauty SaaS Automation//RU",
-            "BEGIN:VEVENT",
-            "UID:" + Date.now() + "@beautysaaS",
-            "DTSTAMP:" + formatIcsDate(new Date()),
-            "DTSTART:" + formatIcsDate(startDate),
-            "DTEND:" + formatIcsDate(endDate),
-            "SUMMARY:" + data.service,
-            "DESCRIPTION:Запись на процедуру.\\nТелефон: " + data.phone,
-            "LOCATION:Студия красоты",
-            "END:VEVENT",
-            "END:VCALENDAR"
-        ].join("\r\n");
-
-        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        
-        const icsBtn = document.getElementById('icsDownloadBtn');
-        icsBtn.href = url;
-        icsBtn.download = `appointment_${data.date}.ics`;
-    }
 </script>
 
 </body>
